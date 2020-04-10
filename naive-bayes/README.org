@@ -12,3 +12,5 @@ python main.py
 #+end_src
 
 * References
+
+https://scikit-learn.org/stable/modules/naive_bayes.html#naive-bayes

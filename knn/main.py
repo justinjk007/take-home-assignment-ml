@@ -1,5 +1,5 @@
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import CategoricalNB, BernoulliNB, ComplementNB, MultinomialNB, GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 import pandas as pd
 import numpy as np
@@ -7,7 +7,7 @@ import numpy as np
 
 def main():
     # load the dataset from file
-    dataset = pd.read_csv('../data.csv')
+    dataset = pd.read_csv('../data_mod.csv')
     print("\n")
 
     # change group labels to numbers
@@ -27,13 +27,27 @@ def main():
     train_Y = train_Y.astype(np.float32)
     test_Y = test_Y.astype(np.float32)
 
-    nb = BernoulliNB()  # Bernoull Naive Bayes, most accurate for this data
+    for i in range(15):
+        model = KNeighborsClassifier(n_neighbors=i + 1)
+        model.fit(train_X, train_Y)
+        output = model.predict(test_X)
+        print("Accuracy with {} neighbors  :  {:.3f}%".format(
+            i+1,
+            metrics.accuracy_score(test_Y, output) * 100,
+        ))
+    exit(0)
 
-    nb_fit = nb.fit(train_X, train_Y)
-    output = nb_fit.predict(test_X)
+    # 38% accuracy
+    model = KNeighborsClassifier(n_neighbors=7)
+
+    # Train the model using the training sets
+    model.fit(train_X, train_Y)
+
+    output = model.predict(test_X)
     print("Predicted output: ", output)
     print("Expected output : ", test_Y)
-    print("Accuracy        :  {:.2f}%".format(metrics.accuracy_score(test_Y, output)*100))
+    print("Accuracy        :  {:.2f}%".format(
+        metrics.accuracy_score(test_Y, output) * 100))
     # Find how many correct matches were made during prediction
     match = 0
     for i, j in zip(output, test_Y):

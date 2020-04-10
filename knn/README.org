@@ -1,0 +1,18 @@
+* Setup
+
+#+begin_src sh
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+#+end_src
+
+To run the script
+#+begin_src sh
+python main.py
+#+end_src
+
+* References
+
+- https://www.datacamp.com/community/tutorials/k-nearest-neighbor-classification-scikit-learn
+- https://cartesianfaith.com/2016/10/06/what-you-need-to-know-about-data-augmentation-for-machine-learning/
+- https://youtu.be/UqYde-LULfs
