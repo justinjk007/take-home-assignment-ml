@@ -27,12 +27,13 @@ def main():
     train_Y = train_Y.astype(np.float32)
     test_Y = test_Y.astype(np.float32)
 
-    nb = BernoulliNB()
+    nb = BernoulliNB()  # Bernoull Naive Bayes, most accurate for this data
 
     nb_fit = nb.fit(train_X, train_Y)
     output = nb_fit.predict(test_X)
     print("Predicted output: ", output)
     print("Expected output : ", test_Y)
+    # Find how many correct matches were made during prediction
     match = 0
     for i, j in zip(output, test_Y):
         if (i == j):
