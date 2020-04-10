@@ -27,18 +27,21 @@ def main():
     train_Y = train_Y.astype(np.float32)
     test_Y = test_Y.astype(np.float32)
 
-    for i in range(15):
-        model = KNeighborsClassifier(n_neighbors=i + 1)
-        model.fit(train_X, train_Y)
-        output = model.predict(test_X)
-        print("Accuracy with {} neighbors  :  {:.3f}%".format(
-            i+1,
-            metrics.accuracy_score(test_Y, output) * 100,
-        ))
-    exit(0)
+    ###############################################
+    # Perf run with different number of neighbors #
+    ###############################################
+    # for i in range(15):
+    #     model = KNeighborsClassifier(n_neighbors=i + 1)
+    #     model.fit(train_X, train_Y)
+    #     output = model.predict(test_X)
+    #     print("Accuracy with {} neighbors  :  {:.3f}%".format(
+    #         i+1,
+    #         metrics.accuracy_score(test_Y, output) * 100,
+    #     ))
+    # exit(0)
 
-    # 38% accuracy
-    model = KNeighborsClassifier(n_neighbors=7)
+    # 53% accuracy
+    model = KNeighborsClassifier(n_neighbors=1)
 
     # Train the model using the training sets
     model.fit(train_X, train_Y)
