@@ -1,0 +1,16 @@
+* Setup
+
+#+begin_src sh
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+#+end_src
+
+To run the script
+#+begin_src sh
+python main.py
+#+end_src
+
+* References
+
+- https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_iris.html#sphx-glr-auto-examples-cluster-plot-cluster-iris-py
