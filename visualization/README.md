@@ -1,0 +1,25 @@
+## Setup for Linux
+
+#+begin_src sh
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+#+end_src
+
+## Setup for Windows
+
+#+begin_src sh
+virtualenv venv
+source venv/Scripts/activate
+pip install -r requirements.txt
+#+end_src
+
+## Execution
+To run the script
+#+begin_src sh
+python visualization.py
+#+end_src
+
+* References
+
+- https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html
